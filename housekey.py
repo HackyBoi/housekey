@@ -69,5 +69,12 @@ while True:
 			files = os.listdir("drivers")
 			for f in files:
 				print(f)
-			
 	
+	elif(command == "search"):
+		files = os.listdir("modules") + os.listdir("drivers")
+		for f in files:
+			if(args[0] in f):
+				if(f.endswith(".py")):
+					print("MODULE: " + f[:-3])
+				else:
+					print("DRIVER: " + f)
