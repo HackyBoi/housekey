@@ -60,21 +60,27 @@ while True:
 			print("You need to select a module!")
 		
 	elif(command == "list"):
-		if(args[0] == "modules"):
-			files = os.listdir("modules")
-			for f in files:
-				if(f.endswith(".py")):
-					print(f[:-3])
-		elif(args[0] == "drivers"):
-			files = os.listdir("drivers")
-			for f in files:
-				print(f)
+		if(args[1]):
+			if(args[0] == "modules"):
+				files = os.listdir("modules")
+				for f in files:
+					if(f.endswith(".py")):
+						print(f[:-3])
+			elif(args[0] == "drivers"):
+				files = os.listdir("drivers")
+				for f in files:
+					print(f)
+		else:
+			print("Usage: list <modules/drivers>")
 	
 	elif(command == "search"):
-		files = os.listdir("modules") + os.listdir("drivers")
-		for f in files:
-			if(args[0] in f):
-				if(f.endswith(".py")):
-					print("MODULE: " + f[:-3])
-				else:
-					print("DRIVER: " + f)
+		if(args[0]):
+			files = os.listdir("modules") + os.listdir("drivers")
+			for f in files:
+				if(args[0] in f):
+					if(f.endswith(".py")):
+						print("MODULE: " + f[:-3])
+					else:
+						print("DRIVER: " + f)
+		else:
+			print("Usage: search <term>")
