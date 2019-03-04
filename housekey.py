@@ -1,40 +1,35 @@
 import os, sys, json
-
 prompt = ">"
-	
-print("housekey 0.0.1")
+
+# Display logo
+os.system("cat logo")
+
 while True:
+	# Get command
 	command = input(prompt)
 	args = command.split(' ')
 	command = args[0]
 	args = args[1:]
 	
-	if(command == "use"):
+	if(command == "use"): # Load either a driver or module
 		if not(args[0]):
 			print("Usage: use <driver/module> <args>")
 			
 		elif(args[0] == "driver"):
 			#Import driver
 			if not(args[2]):
-				print("Usage: use driver <driver type> <driver name>")
-				print("Possible driver types: SDR")
+				print("Usage: use driver <driver name>")
+			try:
+				exec(open("drivers/" + args[2] + "/" + args[2] + ".py").read())
 				
-			if(args[1] == "SDR"):
-				try:
-					global SDRDriver
-					SDRDriver = exec(open("drivers/" + args[2] + "/" + args[2] + ".py").read())
-					
-				except FileNotFoundError:
-					print("File not found!")
-					
-				except:
-					print("Unknown error!")
-					
-			else:
-				print("Usage: use driver <driver type> <driver name>")
-				print("Possible driver types: SDR")
+			except FileNotFoundError:
+				print("File not found!")
+				
+			except:
+				print("Unknown error!")
 				
 		elif(args[0] == "module"):
+			# Import module
 			if not(args[1]):
 				print("Usage: use module <path>")
 				
@@ -54,12 +49,14 @@ while True:
 			print("Usage: use <driver/module> <args>")
 			
 	elif(command == "run"):
+		# Run loaded module
 		if(prompt != ">"):
 			runModule()
 		else:
 			print("You need to select a module!")
 		
 	elif(command == "list"):
+		# List either modules or drivers
 		if(args[1]):
 			if(args[0] == "modules"):
 				files = os.listdir("modules")
@@ -74,6 +71,7 @@ while True:
 			print("Usage: list <modules/drivers>")
 	
 	elif(command == "search"):
+		#Search for modules and drivers
 		if(args[0]):
 			files = os.listdir("modules") + os.listdir("drivers")
 			for f in files:
