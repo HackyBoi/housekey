@@ -10,7 +10,5 @@ Door hacking toolkit. Early alpha.
 * Add modules
 
 ## Credits
-Samy Kamkar - OpenSesame
-http://samy.pl/opensesame
-
+* Samy Kamkar - OpenSesame http://samy.pl/opensesame
 

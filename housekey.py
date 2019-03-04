@@ -43,11 +43,11 @@ while True:
 				exec(open("modules/" + args[1] + ".py").read())
 				
 			except FileNotFoundError:
-				prompt = ""
+				prompt = ">"
 				print("File not found!")
 				
 			except:
-				prompt = ""
+				prompt = ">"
 				print("Unknown error!")
 				
 		else:
@@ -58,4 +58,16 @@ while True:
 			runModule()
 		else:
 			print("You need to select a module!")
+		
+	elif(command == "list"):
+		if(args[0] == "modules"):
+			files = os.listdir("modules")
+			for f in files:
+				if(f.endswith(".py")):
+					print(f[:-3])
+		elif(args[0] == "drivers"):
+			files = os.listdir("drivers")
+			for f in files:
+				print(f)
+			
 	
