@@ -22,7 +22,7 @@ key3 = GarageKey(315000000, 2000,    9,   4,   0, 0x8, 0xe, 0x0)
 key4 = GarageKey(318000000, 2000,    9,  18,   1, 0x020100, 0x03fd00, 0x03fdfe)
 prompt = "OpenSesame >"
 
-def mainMenu():
+def runModule():
 	print("OpenSesame - NOTE: Incomplete!")
 	for key in range(len(garages)):
 		print(str(key) + ". Hz: " + str(garages[key].hz) + " Baudrate: " + str(garages[key].baud) + " Bits: " + str(garages[key].bits) + " Length: " + str(garages[key].length))
@@ -48,4 +48,3 @@ def mainMenu():
 		b2 = garages[selection].b2
 
 garages = [key1, key2, key3, key4]
-mainMenu()
